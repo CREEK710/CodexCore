@@ -1,0 +1,41 @@
+{
+  "name": "codexcore",
+  "version": "0.1.0",
+  "description": "A CodexCore development agent",
+  "type": "module",
+  "scripts": {
+    "dev": "node --import tsx ./src/index.ts",
+    "build": "tsdown --sourcemap",
+    "sentry:upload-sourcemaps": "node ./scripts/sentry-upload-sourcemaps.mjs",
+    "vercel-build": "npm run build && npm run sentry:upload-sourcemaps",
+    "start": "node --enable-source-maps dist/index.js",
+    "lint": "biome check ./src",
+    "lint:fix": "biome check --write ./src",
+    "typecheck": "tsc --noEmit",
+    "volt": "volt"
+  },
+  "dependencies": {
+    "@sentry/node": "^10.43.0",
+    "@voltagent/cli": "^0.1.10",
+    "@voltagent/core": "^2.0.0",
+    "@voltagent/libsql": "^2.0.0",
+    "@voltagent/logger": "^2.0.0",
+    "@voltagent/server-hono": "^2.0.0",
+    "@voltagent/serverless-hono": "^2.0.9",
+    "ai": "^6.0.0",
+    "dotenv": "^16.4.7",
+    "hono": "^4.12.7",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@sentry/cli": "^3.3.3",
+    "@types/node": "^22.10.5",
+    "tsdown": "^0.15.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}
