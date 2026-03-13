@@ -27,6 +27,11 @@ if (!org || !project || !authToken) {
   process.exit(0);
 }
 
+if (!existsSync(sentryCli)) {
+  console.log(`Skipping Sentry sourcemap upload: sentry-cli not found at ${sentryCli}`);
+  process.exit(0);
+}
+
 const candidateDirs = [
   path.join(cwd, ".vercel", "output", "functions"),
   path.join(cwd, "dist"),
@@ -54,6 +59,11 @@ for (const dir of candidateDirs) {
     }
   );
 
+  if (inject.error) {
+    console.log(`Skipping Sentry sourcemap upload: failed to start sentry-cli (${inject.error.message})`);
+    process.exit(0);
+  }
+
   if (inject.status !== 0) {
     process.exit(inject.status ?? 1);
   }
@@ -65,6 +75,11 @@ for (const dir of candidateDirs) {
       stdio: "inherit",
     }
   );
+
+  if (upload.error) {
+    console.log(`Skipping Sentry sourcemap upload: failed to start sentry-cli (${upload.error.message})`);
+    process.exit(0);
+  }
 
   if (upload.status !== 0) {
     process.exit(upload.status ?? 1);
