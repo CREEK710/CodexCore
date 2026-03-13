@@ -5,8 +5,8 @@ Deploy the `VoltAgentCore` directory as the Vercel project root.
 ## Runtime Layout
 
 - Local development uses the Node server entrypoint in `src/index.ts`
-- Vercel uses the serverless handler in `api/voltagent.ts`
-- `vercel.json` routes all requests to that serverless handler
+- Vercel uses the serverless handlers in `api/VoltAgent.ts` and `api/VoltAgent/[...path].ts`
+- Requests under `/api/VoltAgent` are normalized before reaching the VoltAgent Hono app
 - Sentry Node instrumentation is initialized in `src/sentry.ts`
 
 ## Preview / Production Behavior
