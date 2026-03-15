@@ -42,10 +42,10 @@ if (candidateDirs.length === 0) {
   process.exit(0);
 }
 
-const baseArgs = ["--auth-token", authToken, "--org", org, "--project", project];
+const sentryScopeArgs = ["--org", org, "--project", project, "--auth-token", authToken];
 
 if (release) {
-  baseArgs.push("--release", release);
+  sentryScopeArgs.push("--release", release);
 }
 
 for (const dir of candidateDirs) {
@@ -53,7 +53,7 @@ for (const dir of candidateDirs) {
 
   const inject = spawnSync(
     sentryCli,
-    [...baseArgs, "sourcemaps", "inject", dir],
+    ["sourcemaps", ...sentryScopeArgs, "inject", dir],
     {
       stdio: "inherit",
     }
@@ -70,7 +70,15 @@ for (const dir of candidateDirs) {
 
   const upload = spawnSync(
     sentryCli,
-    [...baseArgs, "sourcemaps", "upload", dir, "--validate", "--strip-prefix", cwd],
+    [
+      "sourcemaps",
+      ...sentryScopeArgs,
+      "upload",
+      dir,
+      "--validate",
+      "--strip-prefix",
+      cwd,
+    ],
     {
       stdio: "inherit",
     }

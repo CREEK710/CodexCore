@@ -1,0 +1,78 @@
+:root {
+  --color-void-black: #000000;
+  --color-purple-obsidian: #0d031b;
+  --color-jet-black: #343434;
+  --color-border-muted: color-mix(in srgb, var(--color-text-secondary) 22%, transparent);
+  --color-border-strong: color-mix(in srgb, var(--color-text-secondary) 34%, transparent);
+  --color-border-accent: rgba(253, 189, 1, 0.42);
+  --color-border-intelligence: rgba(137, 59, 255, 0.48);
+  --color-surface-main: color-mix(in srgb, var(--color-purple-obsidian) 58%, var(--color-jet-black));
+  --color-surface-raised: color-mix(in srgb, var(--color-jet-black) 88%, var(--color-purple-obsidian));
+  --color-surface-strong: color-mix(in srgb, var(--color-jet-black) 92%, var(--color-void-black));
+  --color-surface-accent: rgba(253, 189, 1, 0.18);
+  --color-surface-intelligence: rgba(137, 59, 255, 0.2);
+  --color-text-primary: #ffebcd;
+  --color-text-secondary: #838996;
+  --color-text-muted: #838996;
+  --color-text-subtle: #838996;
+  --color-accent: #fdbd01;
+  --color-accent-strong: color-mix(in srgb, var(--color-accent) 78%, var(--color-void-black));
+  --color-action: #fe632a;
+  --color-action-strong: color-mix(in srgb, var(--color-action) 78%, var(--color-void-black));
+  --color-intelligence: #893bff;
+  --color-intelligence-strong: color-mix(in srgb, var(--color-intelligence) 78%, var(--color-void-black));
+  --color-signal-green: #4ade80;
+  --color-signal-yellow: #facc15;
+  --color-signal-red: #ff3b3b;
+  --color-pearl-white: #f8f8ff;
+  --color-motion-bridge: #070700;
+  --color-solar-amber: #ffb347;
+  --color-radiant-amethyst: #b889ff;
+  --color-prism-copper: #c97a5a;
+  --color-pearl-purple: rgba(203, 169, 255, 0.42);
+  --color-pearl-gold: #ffd76a;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  background: var(--color-void-black);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top, rgba(137, 59, 255, 0.16), transparent 30%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-purple-obsidian) 72%, var(--color-void-black)) 0%,
+      color-mix(in srgb, var(--color-purple-obsidian) 42%, var(--color-void-black)) 32%,
+      var(--color-void-black) 100%
+    );
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
